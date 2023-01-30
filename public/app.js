@@ -7,12 +7,21 @@ docTwo = new Payment('Mario', 'plumbing work', 450);
 let docs = [];
 docs.push(docOne);
 docs.push(docTwo);
-console.log(docs);
-const invoiceOne = new Invoice("Benji", "Fees", 50000);
-const invoiceTwo = new Invoice("Luigi", "Fees", 30000);
-let invoices = [];
-invoices.push(invoiceOne);
-invoices.push(invoiceTwo);
-invoices.forEach(invoice => {
-    console.log(invoice.client, invoice.amount);
+//typecasting
+const form = document.querySelector('.new-item-form');
+//inputs
+const type = document.querySelector('#type');
+const toFrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let doc;
+    if (type.value === 'invoice') {
+        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });
