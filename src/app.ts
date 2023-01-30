@@ -1,13 +1,21 @@
 class Invoice {
-    client: string;
-    details: string;
-    amount: number;
+    // readonly client: string;
+    // private details: string;
+    // public amount: number;
 
-    constructor(c: string, d: string, a: number){
-        this.client = c;
-        this.details =d;
-        this.amount = a;
-    }
+    // constructor(c: string, d: string, a: number){
+    //     this.client = c;
+    //     this.details =d;
+    //     this.amount = a;
+    // }
+
+    //Only possible when using access modifiers
+    constructor(
+        readonly client : string,
+        private details : string,
+        public amount: number
+    ){}
+
 
     format(){
         return `${this.client} owes $${this.amount} for ${this.details}`
@@ -22,4 +30,6 @@ let invoices: Invoice[] = []
 invoices.push(invoiceOne);
 invoices.push(invoiceTwo);
 
-console.log(invoices)
+invoices.forEach(invoice =>{
+    console.log(invoice.client, invoice.amount)
+})
