@@ -1,12 +1,17 @@
 "use strict";
-//typecasting
-const form = document.querySelector('.new-item-form');
-//inputs
-const type = document.querySelector('#type');
-const toFrom = document.querySelector('#tofrom');
-const details = document.querySelector('#details');
-const amount = document.querySelector('#amount');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log(type.value, toFrom.value, details.value, amount.value);
-});
+class Invoice {
+    constructor(c, d, a) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    format() {
+        return `${this.client} owes $${this.amount} for ${this.details}`;
+    }
+}
+const invoiceOne = new Invoice("Benji", "Fees", 50000);
+const invoiceTwo = new Invoice("Luigi", "Fees", 30000);
+let invoices = [];
+invoices.push(invoiceOne);
+invoices.push(invoiceTwo);
+console.log(invoices);
