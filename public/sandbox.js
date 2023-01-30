@@ -1,20 +1,8 @@
 "use strict";
-let greet;
-greet = () => {
-    console.log('hello, world!');
+const logDetails = (uid, item) => {
+    console.log(`${item} has uid of  ${uid}`);
 };
-greet();
-//? means optional
-const add = (a, b, c) => {
-    console.log(a + b);
+const greet = (user) => {
+    console.log(`${user.name} says hello!`);
 };
-add(10, 2);
-//default parameter
-const sub = (a, b = 10) => {
-    console.log(b);
-};
-sub(2, 10);
-const minus = (a, b) => {
-    return a - b;
-};
-let result = minus(10, 2);
+greet({ name: 'ben', uid: 10 });
