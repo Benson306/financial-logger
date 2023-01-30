@@ -1,32 +1,19 @@
 import { Invoice } from './classes/invoice.js';
+import { Payment } from './classes/payments.js';
+import { HasFormatter } from './interfaces/Hasformatter.js'
 
-//interfaces
-interface IsPerson {
-    name: string;
-    age: number;
-    speak(a: string): void;
-    spend(a: number): number;
-}
+let docOne : HasFormatter;
+let docTwo : HasFormatter;
 
-const me: IsPerson = {
-    name:'Shaun',
-    age: 40,
-    speak(text: string): void{
-        console.log(text)
-    },
-    spend(amount: number): number{
-        console.log('I spent ', amount);
-        return amount;
-    }
-};
+docOne = new Invoice('Yoshi','web work',250)
+docTwo = new Payment('Mario', 'plumbing work', 450)
 
-let someone: IsPerson ;
+let docs: HasFormatter[] = [];
 
-const greet = (person: IsPerson) => {
-    console.log(person);
-}
+docs.push(docOne);
+docs.push(docTwo);
 
-greet(me);
+console.log(docs)
 
 
 
