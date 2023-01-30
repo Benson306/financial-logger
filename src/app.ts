@@ -1,20 +1,13 @@
-//typecasting
-const form = document.querySelector('.new-item-form') as HTMLFormElement;
+import { Invoice } from './classes/invoice.js';
 
+const invoiceOne = new Invoice("Benji","Fees",50000);
+const invoiceTwo = new Invoice("Luigi","Fees",30000);
 
-//inputs
-const type = document.querySelector('#type') as HTMLSelectElement;
+let invoices: Invoice[] = []
 
-const toFrom = document.querySelector('#tofrom') as HTMLInputElement;
+invoices.push(invoiceOne);
+invoices.push(invoiceTwo);
 
-const details = document.querySelector('#details') as HTMLInputElement;
-
-const amount = document.querySelector('#amount') as HTMLInputElement;
-
-form.addEventListener('submit',(e: Event) =>{
-    e.preventDefault();
-
-    console.log(
-        type.value, toFrom.value, details.value, amount.value
-    )
+invoices.forEach(invoice =>{
+    console.log(invoice.client, invoice.amount)
 })
