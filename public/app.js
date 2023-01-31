@@ -21,40 +21,18 @@ const list = new listTenplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
+    //tupple
+    let values = [toFrom.value, details.value, amount.valueAsNumber];
     if (type.value === 'invoice') {
-        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, 'end');
 });
-//Generics
-const addUID = (obj) => {
-    let uid = Math.floor(Math.random() * 100);
-    return Object.assign(Object.assign({}, obj), { uid });
-};
-let techOne = addUID({ name: 'Luigi', age: 40 });
-console.log(techOne.name);
-//Enums
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
-    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
-    ResourceType[ResourceType["FILM"] = 2] = "FILM";
-    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
-    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
-})(ResourceType || (ResourceType = {}));
-const techTwo = {
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: {
-        name: 'Luigi'
-    }
-};
-const techThree = {
-    uid: 2,
-    resourceType: ResourceType.PERSON,
-    data: ['Benji', 'Abu']
-};
-console.log(techTwo, techThree);
+//tuples
+let arr = ['ben', 12, true];
+let tup = ['abu', 14, false];
+let student;
+student = ['Benji', 405];

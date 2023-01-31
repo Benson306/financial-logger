@@ -36,10 +36,13 @@ form.addEventListener('submit',(e: Event) =>{
 
     let doc : HasFormatter;
 
+    //tupple
+    let values: [string, string, number] = [toFrom.value, details.value, amount.valueAsNumber]
+
     if(type.value === 'invoice'){
-        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber)
+        doc = new Invoice(...values)
     }else{
-        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
+        doc = new Payment(...values)
     }
 
     list.render(doc, type.value, 'end')
@@ -47,42 +50,12 @@ form.addEventListener('submit',(e: Event) =>{
 
 })
 
-//Generics
+//tuples
 
-const addUID = <T extends {name: string}>(obj: T) => {
-    let uid = Math.floor(Math.random() * 100);
+let arr = ['ben', 12, true];
 
-    return {...obj, uid}
-}
+let tup: [string, number, boolean] = ['abu', 14, false];
 
-let techOne = addUID({name:'Luigi', age:40})
+let student: [string, number]
 
-console.log(techOne.name);
-
-//Enums
-enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
-
-
-//Generics with interfaces
-interface Resource<T> {
-    uid: number;
-    resourceType: ResourceType;
-    data: T;
-}
-
-const techTwo: Resource<object> = { //can be <string> for string or <number> for number
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: {
-        name: 'Luigi'
-    }
-
-}
-
-const techThree: Resource<string[]> = {
-    uid: 2,
-    resourceType: ResourceType.PERSON,
-    data: ['Benji','Abu']
-}
-
-console.log(techTwo, techThree)
+student = ['Benji', 405];
