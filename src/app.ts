@@ -1,4 +1,5 @@
 import { Invoice } from './classes/invoice.js';
+import { listTenplate } from './classes/ListTemplate.js';
 import { Payment } from './classes/payments.js';
 import { HasFormatter } from './interfaces/Hasformatter.js'
 
@@ -26,6 +27,10 @@ const details = document.querySelector('#details') as HTMLInputElement;
 
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
+//list template instance
+const ul =document.querySelector('ul')!;
+const list = new listTenplate(ul);
+
 form.addEventListener('submit',(e: Event) =>{
     e.preventDefault();
 
@@ -37,6 +42,7 @@ form.addEventListener('submit',(e: Event) =>{
         doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
     }
 
-    console.log(doc)
+    list.render(doc, type.value, 'end')
+    
 
 })
