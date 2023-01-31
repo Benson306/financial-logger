@@ -59,16 +59,20 @@ let techOne = addUID({name:'Luigi', age:40})
 
 console.log(techOne.name);
 
+//Enums
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON }
+
+
 //Generics with interfaces
 interface Resource<T> {
     uid: number;
-    resourceName: string;
+    resourceType: ResourceType;
     data: T;
 }
 
 const techTwo: Resource<object> = { //can be <string> for string or <number> for number
     uid: 1,
-    resourceName: 'person',
+    resourceType: ResourceType.BOOK,
     data: {
         name: 'Luigi'
     }
@@ -77,6 +81,8 @@ const techTwo: Resource<object> = { //can be <string> for string or <number> for
 
 const techThree: Resource<string[]> = {
     uid: 2,
-    resourceName: 'person 2',
+    resourceType: ResourceType.PERSON,
     data: ['Benji','Abu']
 }
+
+console.log(techTwo, techThree)
