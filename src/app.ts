@@ -46,3 +46,37 @@ form.addEventListener('submit',(e: Event) =>{
     
 
 })
+
+//Generics
+
+const addUID = <T extends {name: string}>(obj: T) => {
+    let uid = Math.floor(Math.random() * 100);
+
+    return {...obj, uid}
+}
+
+let techOne = addUID({name:'Luigi', age:40})
+
+console.log(techOne.name);
+
+//Generics with interfaces
+interface Resource<T> {
+    uid: number;
+    resourceName: string;
+    data: T;
+}
+
+const techTwo: Resource<object> = { //can be <string> for string or <number> for number
+    uid: 1,
+    resourceName: 'person',
+    data: {
+        name: 'Luigi'
+    }
+
+}
+
+const techThree: Resource<string[]> = {
+    uid: 2,
+    resourceName: 'person 2',
+    data: ['Benji','Abu']
+}

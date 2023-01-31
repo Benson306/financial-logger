@@ -29,3 +29,22 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, 'end');
 });
+//Generics
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let techOne = addUID({ name: 'Luigi', age: 40 });
+console.log(techOne.name);
+const techTwo = {
+    uid: 1,
+    resourceName: 'person',
+    data: {
+        name: 'Luigi'
+    }
+};
+const techThree = {
+    uid: 2,
+    resourceName: 'person 2',
+    data: ['Benji', 'Abu']
+};
